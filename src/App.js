@@ -1,5 +1,8 @@
 /*jslint esnext:true, browser:true*/
 export default class App {
+	/**
+	 * Méthode principale. Retourne le tableau HTML de la palette de couleur.
+	 */
 	static palette() {
 		var resultat, tbody, tr, td;
 		resultat = document.createElement("table");
@@ -15,6 +18,10 @@ export default class App {
 		}
 		return resultat;
 	}
+	/**
+	 * Méthode qui permet d'attendre le chargement de la page avant d'éxécuter le script principal
+	 * @returns {Promise} La promesse qui sera résolue après chargement
+	 */
 	static load() {
 		return new Promise(resolve => {
 			window.addEventListener("load", () => {
