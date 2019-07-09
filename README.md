@@ -1,0 +1,1 @@
+#Exemple Palette de couleurs
