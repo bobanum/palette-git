@@ -1,21 +1,31 @@
 /*jslint esnext:true, browser:true*/
 export default class App {
+	static main() {
+		this.app = document.getElementById("app");
+		this.app.appendChild(this.palette());
+	}
 	/**
 	 * Méthode principale. Retourne le tableau HTML de la palette de couleur.
 	 */
 	static palette() {
-		var resultat, tbody, tr, td;
+		var resultat, section, rangee, cellule, saut;
+		saut = 51;
 		resultat = document.createElement("table");
-		tbody = resultat.appendChild(document.createElement("tbody"));
-		for (let r = 0; r < 256; r += 51) {
-			tr = tbody.appendChild(document.createElement("tr"));
-			for (let g = 0; g < 256; g += 51) {
-				for (let b = 0; b < 256; b += 51) {
-					td = tr.appendChild(document.createElement("td"));
-					td.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+		section = resultat.appendChild(document.createElement("tbody"));
+		for (let r = 0; r < 256; r += saut) {
+			rangee = section.appendChild(document.createElement("tr"));
+			for (let g = 0; g < 256; g += saut) {
+				for (let b = 0; b < 256; b += saut) {
+					cellule = rangee.appendChild(document.createElement("td"));
+					let maCouleur = this.couleur(r, g, b);
+					cellule.style.backgroundColor = maCouleur;
 				}
 			}
 		}
+		return resultat;
+	}
+	static couleur(rouge, vert, bleu) {
+		var resultat = "rgb(" + rouge + "," + vert + "," + bleu + ")";
 		return resultat;
 	}
 	/**

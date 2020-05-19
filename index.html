@@ -7,9 +7,7 @@
 	<link rel="stylesheet" href="./palette.css"/>
 	<script type="module">
 		import App from "./src/App.js";
-		App.load().then(data => {
-			document.getElementById("app").appendChild(App.palette());
-		});
+		App.load().then(data => App.main());
 	</script>
 </head>
 <body>
